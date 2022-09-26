@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.328888.xyz/2022/08/10/4eyxk.webp">
 <meta property="article:published_time" content="2022-07-24T13:22:28.000Z">
-<meta property="article:modified_time" content="2022-09-14T09:17:38.262Z">
+<meta property="article:modified_time" content="2022-09-26T22:05:13.249Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-09-14 17:17:38'
+  postUpdate: '2022-09-27 06:05:13'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -389,13 +389,13 @@ x \equiv a_2 (\bmod m_2)</script><p>我们把同余方程转化成不定方程 �
 <script type="math/tex; mode=display">
 x = m_1k_1 + a1 = m_2k_2 + a_2 \;\; k_1,k_2 \in Z</script><p>于是有 : </p>
 <script type="math/tex; mode=display">
-m_1k_1 - m_2k_2 = a_2 - a_1</script><p>由4裴蜀定理可得 ： 当 $a_2 - a_1$ 不能被 $\gcd(m1,m2)$ 整除时，方程无解。  </p>
+m_1k_1 - m_2k_2 = a_2 - a_1</script><p>由裴蜀定理可得 ： 当 $a_2 - a_1$ 不能被 $\gcd(m1,m2)$ 整除时，方程无解。  </p>
 <p>其他情况下，我们可以使用 $exgcd$ 求出一组可行解 $(k_1,k_2)$ ，具体流程如下 ： </p>
-<p>设 $d = \gcd(m_1,m_2)$ , $p_1 = \frac{m-1}{d} $ , $p_2 = \frac{m_2}{d} $,于是上式等价于 ： </p>
+<p>设 $d = \gcd(m_1,m_2)$ , $p_1 = \frac{m_1}{d}$ , $p_2 = \frac{m_2}{d}$ ,于是上式等价于 ： </p>
 <script type="math/tex; mode=display">
 k_1p_1 - k_2p_2 = \frac{a_2 - a_1}{d}</script><p>等号右边是整数。</p>
 <script type="math/tex; mode=display">
-x_0 p-1 + y_0 p_2 = 1</script><p>假设我们求得了这个方程的一组解 $ (x_0,y_0) $，那么我们就显然求出了 $k_1,k_2$ ：  </p>
+x_0 p_1 + y_0 p_2 = 1</script><p>假设我们求得了这个方程的一组解 $ (x_0,y_0) $，那么我们就显然求出了 $k_1,k_2$ ：  </p>
 <script type="math/tex; mode=display">
 k_1 = \frac{a_2 - a_1}{d}x_0,k_2 = - \frac{a_2 - a_1}{d}y_0</script><p>于是 ： </p>
 <script type="math/tex; mode=display">
@@ -404,16 +404,16 @@ x = a_1 + k_1 m_1 = a_1 + \frac{a_2 - a_1}{d}x_0m_1</script><p>于是我们构�
 <blockquote>
 <p>若有特解 $x’$ ，那么上述两个线性同余方程构成的同余方程组的通解是 ： $x’+k\cdot \text{lcm}(m_1,m_2) $，也就是 ： </p>
 <script type="math/tex; mode=display">
-x \equiv x' (\bmod \text{lcm}(m-1,m_2))</script></blockquote>
-<p>这个通解的正确性是显然的，然而我们需要考虑的问题是它是否全面，即为何一个 $\text{lcm}(m-1,m_2)$ 当中只会有一个的问题。</p>
+x \equiv x' (\bmod \text{lcm}(m_1,m_2))</script></blockquote>
+<p>这个通解的正确性是显然的，然而我们需要考虑的问题是它是否全面，即为何一个 $\text{lcm}(m_1,m_2)$ 当中只会有一个的问题。</p>
 <p>为了解决这个唯一性问题，我们通常采取反证法 ： 假设 $x,y$ 都是满足条件的解，然后证明 $x = y$ ，那么就可以证明唯一性。</p>
-<p>设上述问题中存在 $0 \le x,y \le \text{lcm}(m-1,m_2) $ ，都使得原同余方程组成立。  </p>
+<p>设上述问题中存在 $0 \le x,y \le \text{lcm}(m_1,m_2) $ ，都使得原同余方程组成立。  </p>
 <p>不妨设 $x \ge y$ ,那么立即可以发现 ：  </p>
 <script type="math/tex; mode=display">
 x - y \equiv (\bmod m_1)</script><script type="math/tex; mode=display">
 x - y \equiv (\bmod m_2)</script><p>也就是 ： </p>
 <script type="math/tex; mode=display">
-\text{lcm}(m_1,m_2) \mid (x-y)</script><p>因为 $x,y$ 都是小于 $\text{lcm}(m_1,m_2)$ 的数，他们做差也一定小于 $\text{lcm}(m_1,m_2)$ ，又有整除，于是 $x - y = 0,x = y$ ,得证。</p>
+\text{lcm}(m_1,m_2) \mid (x-y)</script><p>因为 $x,y$ 都是小于 $\text{lcm}(m_1,m_2)$ 的数，他们作差也一定小于 $\text{lcm}(m_1,m_2)$ ，又有整除，于是 $x - y = 0,x = y$ ,得证。</p>
 <p>则原来两个方程组成的方程组的解为 $x \equiv b (\bmod M) $ ，其中 $b = m_1k_1 + a_1$ , $M = lcm(m_1,m_2)$</p>
 <p>对于有多个方程的情况，我们使用相同的方法对它进行两两合并，就可以解出同余方程组了。</p>
 <p>模板题是<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4777">P4777</a>  </p>

@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/eb9798hz.png">
 <meta property="article:published_time" content="2022-07-24T12:56:07.000Z">
-<meta property="article:modified_time" content="2022-09-10T11:13:59.855Z">
+<meta property="article:modified_time" content="2022-09-25T12:10:27.389Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-09-10 19:13:59'
+  postUpdate: '2022-09-25 20:10:27'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -190,7 +190,7 @@ n(m+1) - f(c,c-b-1,a,m)</script><p>我们发现，此时它可以继续递归了
 <p>(因为 $a \ge c \ || \  b \ge c$ 时取模， $a &lt; c \ \&amp;\&amp;\ b &lt; c$ 时交换 )<br>那么递归边界也就是 $a = 0$ 的情况显然此时的柿子可以 $O(1)$ 求解<br>那么最基本的类欧几里得算法到这里可以说是结束了（很简单对不对）<br>所以下面我们当然还有扩展版 ：）  </p>
 <h4 id="step-2-amp-3"><a href="#step-2-amp-3" class="headerlink" title="step 2 &amp; 3 :"></a>step 2 &amp; 3 :</h4><h5 id="step-2"><a href="#step-2" class="headerlink" title="step 2 :"></a>step 2 :</h5><p>求一个柿子 ： </p>
 <script type="math/tex; mode=display">
-g(a,b,c,n) = \sum_{i = 0}^{n} \left \lfloor \frac{ai+b}{c}  \right \rfloor  i</script><h5 id="step-3"><a href="#step-3" class="headerlink" title="step 3 :"></a>step 3 :</h5><p>求另外一个柿子 ： </p>
+g(a,b,c,n) = \sum_{i = 0}^{n} i \left \lfloor \frac{ai+b}{c} \right \rfloor</script><h5 id="step-3"><a href="#step-3" class="headerlink" title="step 3 :"></a>step 3 :</h5><p>求另外一个柿子 ： </p>
 <script type="math/tex; mode=display">
 h(a,b,c,n) = \sum_{i = 0}^{n} \left \lfloor \frac{ai+b}{c}  \right \rfloor ^ 2</script><p><del>这两个柿子看起来就很友善对不对</del></p>
 <p>求$a \ge c \ || \  b \ge c$ 时的情况都比较简单，<del>虽然项数可能多一点但是推柿子的难度不大</del>，所以这里直接放结果应该没太大问题（我觉得我上边写的挺详细的） ：<br>（中间用了一个小学奥数级别的结论： $\sum _{i = 1} ^ {n} i^2 = \frac{n(n+1)(2n+1)}{6} $ )<br>$a \ge c \ || \  b \ge c$ 时 ： </p>
@@ -199,7 +199,7 @@ g(a,b,c,n)= g(a \text{ mod } c,  b \text{ mod } c,c,n) + \left \lfloor \frac{a}{
 h(a,b,c,n) = h(a \text{ mod } c, b \text{ mod } c,c,n) + 2\left \lfloor \frac{b}{c}  \right \rfloor f(a \text{ mod } c,b \text{ mod } c,c,n)</script><script type="math/tex; mode=display">
 + 2\left \lfloor \frac{a}{c}  \right \rfloor g(a \text{ mod } c,b \text{ mod } c,c,n) + \left \lfloor \frac{a}{c}  \right \rfloor  ^ 2\frac{n(n+1)(2n+1)}{6} + \left \lfloor \frac{b}{c}  \right \rfloor ^ 2 (n+1) + \left \lfloor \frac{a}{c}  \right \rfloor \left \lfloor \frac{b}{c}  \right \rfloor n(n+1)</script><p>(因为h的柿子稍微有点长所以换了个行<del>不然就丑死了</del>虽然换行之后也只能保证全屏情况下能看）<br>接下来就是 $a &lt; c \ \&amp;\&amp;\ b &lt; c$ 的部分了 ：<br>对于 $g$ :<br>我们设 $m = \left \lfloor \frac{an+b}{c}  \right \rfloor  -1$<br>那么就有：</p>
 <script type="math/tex; mode=display">
-g(a,b,c,n) = \sum_{i = 0}^{n}\left \lfloor \frac{ai+b}{c}  \right \rfloor</script><script type="math/tex; mode=display">
+g(a,b,c,n) = \sum_{i = 0}^{n} i \left \lfloor \frac{ai+b}{c}  \right \rfloor</script><script type="math/tex; mode=display">
  = \sum_{j = 0} ^ {m}\sum_{i = 0}^{n}\left [ j < \left \lfloor \frac{ai+b}{c}  \right \rfloor \right ] \cdot i</script><p>与上文相同的化简方式可得 ： </p>
 <script type="math/tex; mode=display">
  \sum_{j = 0}^{m} \sum_{i=0}^{n} \left [ i > \left \lfloor \frac{jc+c-b-1}{a} \right \rfloor  \right ] \cdot i</script><p>此时我们设 $t = \left \lfloor \frac{jc+c-b-1}{a} \right \rfloor$<br>显然只有当 $i \ge t + 1$ 时才产生贡献，方括号中值为 $1$ ，乘上 $i$ 之后显然是一个等差数列<br>则由小学二年级就学过的等差数列求和公式可得：  </p>
