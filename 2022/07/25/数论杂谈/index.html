@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/je7i52ig.png">
 <meta property="article:published_time" content="2022-07-25T10:50:06.000Z">
-<meta property="article:modified_time" content="2022-09-28T05:19:57.001Z">
+<meta property="article:modified_time" content="2022-10-08T11:57:06.533Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-09-28 13:19:57'
+  postUpdate: '2022-10-08 19:57:06'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -165,17 +165,17 @@
 <h1 id="gcd与lcm"><a href="#gcd与lcm" class="headerlink" title="gcd与lcm"></a>gcd与lcm</h1><h2 id="最大公约数（gcd）"><a href="#最大公约数（gcd）" class="headerlink" title="最大公约数（gcd）"></a>最大公约数（gcd）</h2><p>Greatest Common Divisor (gcd)</p>
 <p>一组数的公约数就是指同时是这组数中每一个数的约数的数. $\pm 1$ 是任意一组整数的公约数.</p>
 <p>最大公约数就是最大的公约数.</p>
-<p>定义 $gcd(0,0) = 0$  </p>
+<p>定义 $\gcd(0,0) = 0$  </p>
 <h3 id="性质-："><a href="#性质-：" class="headerlink" title="性质 ："></a>性质 ：</h3><ul>
-<li>$gcd(a,b) = gcd(a,a-b) = gcd(b,a-b)$(更相减损)</li>
-<li>$gcd(2a,2b) = 2gcd(a,b)$</li>
+<li>$\gcd(a,b) = \gcd(a,a-b) = \gcd(b,a-b)$(更相减损)</li>
+<li>$\gcd(2a,2b) = 2\gcd(a,b)$</li>
 </ul>
 <p>例题是<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA11426">UVA11426</a></p>
 <p>那就推一下这个例题的式子罢 ： </p>
 <script type="math/tex; mode=display">
 \begin{split}
-\sum_{i=1}^n \sum_{j = i+1}^n &= \sum_{j = 2}^n \sum_{i = 1}^{j-1}gcd(i,j)\\
-&= \sum_{d=1}^n d \times \sum_{j=2}^n \sum_{i = 1}^{j-1}[gcd(i,j) = d] \\
+\sum_{i=1}^n \sum_{j = i+1}^n &= \sum_{j = 2}^n \sum_{i = 1}^{j-1}\gcd(i,j)\\
+&= \sum_{d=1}^n d \times \sum_{j=2}^n \sum_{i = 1}^{j-1}[\gcd(i,j) = d] \\
 &= \sum_{d=1}^n d \times \sum_{j=2}^{\lfloor \frac{n}{d} \rfloor} \sum_{i=1}^{j-1}[i \bot j]\\
 &= \sum_{d=1}^n d \times \sum_{j=2}^{\lfloor \frac{n}{d} \rfloor}\varphi(j)\\
 \end{split}</script><p>到这里第一步已经成功了，都是经典操作也没什么难度。考虑进一步优化：<br>设 $S(x) = \sum_{j=2}^x \varphi(j) ,f(x) = \sum_{j = 1}^x j $.</p>

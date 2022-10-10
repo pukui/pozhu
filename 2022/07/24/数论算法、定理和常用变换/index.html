@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.328888.xyz/2022/08/10/4eyxk.webp">
 <meta property="article:published_time" content="2022-07-24T13:22:28.000Z">
-<meta property="article:modified_time" content="2022-10-06T22:26:38.276Z">
+<meta property="article:modified_time" content="2022-10-08T11:59:43.731Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-10-07 06:26:38'
+  postUpdate: '2022-10-08 19:59:43'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -149,7 +149,7 @@
 <p>然后根据更相减损每次给 $a$ 减去 $b$ 直到 $a &lt; b$ ,这个过程就等价于 $a$ 对 $b$ 取模。  </p>
 <p>然后欧几里得算法得证。</p>
 <p>第二种方法是 ：  </p>
-<p>不妨假设 $ a &gt; b$ ..<br>容易发现 ： 如果 $b \mid a$ ，那么 $b$ 就是两者的最大公约数。  </p>
+<p>不妨假设 $ a &gt; b$<br>容易发现 ： 如果 $b \mid a$ ，那么 $b$ 就是两者的最大公约数。  </p>
 <p>对于不能整除时 ： 我们可以设 $a = kb + r$ ，其中 $r &lt; b$ 。  </p>
 <p>我们要证明的就是 $\gcd(a,b) = \gcd(b,a \bmod  b \; )$。过程如下 ：  </p>
 <p>因为 $a = kb + r$ ，所以显然有 $r = a \bmod b$ 。  </p>
@@ -179,7 +179,7 @@
 <p>于是原式化为 ： </p>
 <script type="math/tex; mode=display">
 \sum(f(r) - f(l-1)) \times S(\lfloor \frac{n}{l} \rfloor)</script><p>预处理 $f(x),S(x)$ 的值，最终对于 $T$ 次询问总的时间复杂度是 $O(n + T \sqrt{n} )$ ,可以通过本题。</p>
-<h2 id="扩展欧几里得算法-exgcd"><a href="#扩展欧几里得算法-exgcd" class="headerlink" title="扩展欧几里得算法(exgcd)"></a>扩展欧几里得算法(exgcd)</h2><h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>由裴蜀定理我们已知 ： $ax + by = gcd(a,b)$ 一定存在整数解。</p>
+<h2 id="扩展欧几里得算法-exgcd"><a href="#扩展欧几里得算法-exgcd" class="headerlink" title="扩展欧几里得算法(exgcd)"></a>扩展欧几里得算法(exgcd)</h2><h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>由裴蜀定理我们已知 ： $ax + by = \gcd(a,b)$ 一定存在整数解。</p>
 <p>使用 exgcd 可以得到上述方程的一组特解。  </p>
 <p>考虑解这个方程，显然当 $b = 0$ 时我们有 : $x = 1,y \in Z$。</p>
 <p>当 $b \neq 0$ 时，我们设：   </p>
