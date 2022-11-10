@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/tmwhb4q3.png">
 <meta property="article:published_time" content="2022-07-25T07:16:06.000Z">
-<meta property="article:modified_time" content="2022-10-08T03:59:32.000Z">
+<meta property="article:modified_time" content="2022-11-10T08:19:06.672Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-10-08 11:59:32'
+  postUpdate: '2022-11-10 16:19:06'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -150,7 +150,7 @@
 <p>欧拉筛是质数的线性筛法，也经常用来预处理 $\varphi$ 和 $\mu$ 的值<br>欧拉筛的特点是每个数只被自己的最小质因子筛去，因此是线性算法(所以欧拉筛在筛出合数的同时可以求出每个合数的最小质因子)。<br>下面给出欧拉筛处理 $\varphi$ 和 $\mu$ 的代码(代码中未取模) ：  </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">euler</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    vis[<span class="number">0</span>] = vis[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) &#123;p[++tot] = i;mu[i] = <span class="number">-1</span>;phi[i] = i<span class="number">-1</span>;&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j&lt;=tot &amp;&amp; i * p[j]&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i * p[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % p[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                phi[i * p[j]] = phi[i] * p[j];</span><br><span class="line">                mu[i * p[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mu[i * p[j]] = -mu[i];</span><br><span class="line">            phi[i * p[j]] = phi[i] * (p[j]<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>欧拉筛预处理 $\varphi$ 和 $\mu$ 的过程完全依赖于他们的性质，他们的性质在文章<a href="http://pukui.github.io/2022/07/24/%E6%95%B0%E8%AE%BA%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/">数论函数总结</a>中有过提及。  </p>
-<p>实际上欧拉筛可以在线性时间内预处理几乎所有积性函数，只是实现方式各不相同罢了。</p>
+<p>实际上欧拉筛可以在线性时间内预处理几乎所有积性函数，只是实现方式各不相同罢了。总体的思想就是表示成枚举质因子来统计贡献的形式，然后用质因子更新倍数。</p>
 <h3 id="三、杜教筛"><a href="#三、杜教筛" class="headerlink" title="三、杜教筛"></a>三、杜教筛</h3><p>参考资料 ： </p>
 <p><a target="_blank" rel="noopener" href="https://oiwiki.org/math/number-theory/du/">oi-wiki</a><br><a target="_blank" rel="noopener" href="https://gypsophila.blog.luogu.org/dls-tql">Gypsophila 的博客</a>  </p>
 <p>杜教筛是处理数论函数前缀和问题的优秀亚线性算法，码量不太大。  </p>
