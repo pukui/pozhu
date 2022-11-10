@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s1.328888.xyz/2022/08/10/4eSMw.webp">
 <meta property="article:published_time" content="2022-09-13T08:24:48.000Z">
-<meta property="article:modified_time" content="2022-11-10T07:16:03.403Z">
+<meta property="article:modified_time" content="2022-11-10T07:17:59.596Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-11-10 15:16:03'
+  postUpdate: '2022-11-10 15:17:59'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -264,7 +264,7 @@ f(n,m) &= \sum_{i = 1}^n \sum_{j = 1}^m [\gcd(i,j) = k]\\
 <p>笔者写完了下面的三道例题之后回来写的这题，所以觉得有点水。 </p>
 <p>但是考虑到上边的例题都是类板子所以给解释下。</p>
 <p>感觉这题作为莫反初入门之后的练手题还是不错的，难度并不很大也能体现出一些最基本的想法。</p>
-<p>题解里设了很多额外的函数，但我觉得这是不必要甚至多余的。明明像这样本就可以一步到位，但是额外增设函数会使读者心生畏惧，也是自己推式子的条理性有所下降，影响了思维的连贯性。</p>
+<p>题解里设了很多额外的函数，但我觉得这是不必要甚至多余的。明明像这样本就可以一步到位，但是额外增设函数会使读者心生畏惧，也使自己推式子的条理性有所下降，影响了思维的连贯性。</p>
 <p>首先是第一步到第二步枚举，然后把 $\gcd$ 作为枚举项，所以枚举的 $i,j$ 变成 $\gcd$ 的多少倍，有了枚举上界的变化，同时保证是 $\gcd$ 所以要求 $i \bot j$ 。</p>
 <p>第二步到第三步同样枚举  $\gcd(i,j)$ ,但要注意由于 $i,j$ 的性质发生变化这里的 $\gcd(i,j)$ 并不在所有条件下都和前文 $g$ 相等，在上一段的基础上这应该是容易理解的。  </p>
 <p>最后一步同理将枚举项提前，就可以从枚举因数变成枚举倍数，从而去掉求和下标中整除形式的条件。</p>
