@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/senri1n5.png">
 <meta property="article:published_time" content="2022-07-24T09:57:34.000Z">
-<meta property="article:modified_time" content="2022-11-10T11:08:33.695Z">
+<meta property="article:modified_time" content="2022-11-15T11:44:29.349Z">
 <meta property="article:author" content="Pozhu">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="数论">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-11-10 19:08:33'
+  postUpdate: '2022-11-15 19:44:29'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -161,7 +161,7 @@ id^k(x)\space \space \space
 <li>对于质数 $p$ ，$\varphi(p) = p-1$<br>显然，除了质数本身的数都与他互质  </li>
 <li>对于 $x = p^k,k \in N_{+} $,有 $\varphi(x) = (p-1) \times p^{k-1}$<br>证明 ： 所有 $p$ 的倍数都与 $x$ 不互质，其他所有数都与 $x$ 互质，$1 \sim x$ 中 $p$ 的倍数恰好有 $p^{k-1}$ 个（包括 $x$），所以 $\varphi(x) = p^k - p^{k-1} = (p-1) \times p^{k-1}$  </li>
 <li>欧拉函数是积性函数，即对于互质的两数 $p$ ， $q$ ，有 $\varphi(p \times q) = \varphi(p) \times \varphi(q)$<br>证明略  </li>
-<li>对于数 $x$ 分解质因数的结果是 $x = \prod_{i = 1}^{n} p_i^{k_i}$ ，有 $\varphi(x) = x \prod_{i = 1}^{n} (1 - \frac{1}{p_i} )$<br>证明 ： 利用前几条定理代入即得  </li>
+<li>对于数 $x$ 分解质因数的结果是 $x = \prod_{i = 1}^{n} p_i^{k_i}$ ，有 $\varphi(x) = x \prod_{i = 1}^{n} (1 - \frac{1}{p_i} )$。显然利用该性质可以在 $O(\sqrt{n})$ 的时间内容易地求出数 $n$ 的欧拉函数值。<br>证明 ： 利用前几条定理代入即得  </li>
 <li>若 $p \mid x \ \&amp;\&amp;\ p\in prime $ ，有 $ \varphi(p \times x) = p \times \varphi(x) $<br>证明 ： 使用性质4，连乘内容不变，前面 $x$ 变成 $p \times x$ 即得  </li>
 <li>若 $p \nmid x \ \&amp;\&amp;\ p \in prime $，有 $\varphi(p \times x) = (p-1) \times \varphi(x) $<br>证明 ： $p$ 与 $x$ 互质，由积性函数得到  </li>
 <li>$\varphi * 1 = id$ </li>
@@ -274,9 +274,9 @@ a_i = \sum_{j = 0}^{k_i} p_i^{k_i}</script><p>考察线性筛的过程，我们�
 <ul>
 <li><p>对于一个质数 $p$,根据定义有 $\sigma(p) = p+1,a_p = p+1$</p>
 </li>
-<li><p>当满足 <code>i % p[j] == 0</code> 时，我们已知 <code>p[j]</code> 是 <code>tmp</code> 的最小质因子，且多出现了一次，幂次加一。于是有 $a_{tmp} = a_i <em> p + 1$，可以认为是每个次幂右移之后加上常数项。对于 $\sigma$ 的转移类似对 $\tau$ 的转移 ： $\sigma(tmp) = \sigma(i) </em> \frac{a_{tmp}}{a_{i}}$</p>
+<li><p>当满足 <code>i % p[j] == 0</code> 时，我们已知 <code>p[j]</code> 是 <code>tmp</code> 的最小质因子，且多出现了一次，幂次加一。于是有 $a_{tmp} = a_i \ast p + 1$，可以认为是每个次幂右移之后加上常数项。对于 $\sigma$ 的转移类似对 $\tau$ 的转移 ： $\sigma(tmp) = \sigma(i) \ast \frac{a_{tmp}}{a_{i}}$</p>
 </li>
-<li><p>否则<code>p[j]</code>是唯一的最小质因子，转移 ： $a_{tmp} = p+1,\sigma(tmp) = \sigma(i) <em> \sigma(p)$ ，第二个转移可以由积性解释，也可以由计算式解释。等价于 $\sigma(tmp) = \sigma(i) </em> (p+1)$</p>
+<li><p>否则<code>p[j]</code>是唯一的最小质因子，转移 ： $a_{tmp} = p+1,\sigma(tmp) = \sigma(i) \ast \sigma(p)$，第二个转移可以由积性解释，也可以由计算式解释。等价于 $\sigma(tmp) = \sigma(i) \ast (p+1)$</p>
 </li>
 </ul>
 <p>代码 ： </p>
